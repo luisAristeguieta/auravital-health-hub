@@ -78,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "AuraVital — CRM Médico, Agenda y Salud Terapéutica" },
+      { name: "description", content: "AuraVital: Centro de Salud Terapéutica, Agenda Médica y Equipos de Jade." },
+      { name: "author", content: "AuraVital" },
+      { property: "og:title", content: "AuraVital — CRM Médico, Agenda y Salud Terapéutica" },
+      { property: "og:description", content: "AuraVital: Centro de Salud Terapéutica, Agenda Médica y Equipos de Jade." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@AuraVital" },
     ],
     links: [
       {
@@ -98,7 +98,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/favicon.svg" },
     ],
   }),
   shellComponent: RootShell,
@@ -121,14 +123,46 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+import { Header } from "@/components/auravital/Header";
+import { CartDrawer } from "@/components/cart/CartDrawer";
+import { AuthProvider } from "@/context/AuthContext";
+import { CartProvider } from "@/context/CartContext";
+import { useNavigate } from "@tanstack/react-router";
+
+function AppLayout() {
+  const navigate = useNavigate();
+
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <div className="min-h-screen bg-background flex flex-col justify-between">
+          <Header />
+          <main className="flex-1 w-full">
+            <Outlet />
+          </main>
+          <footer className="border-t py-8 text-center text-xs text-muted-foreground space-y-2 bg-card/40">
+            <p className="font-semibold text-foreground/90">
+              AuraVital · Centro de Salud Terapéutica & Equipos Médicos
+            </p>
+            <p>
+              Tecnología de Alineación Espinal con Piedras de Jade y Calor Infrarrojo · Quito - Guayaquil - Cuenca, Ecuador
+            </p>
+          </footer>
+
+          <CartDrawer onGoToCatalog={() => navigate({ to: "/catalogo" })} />
+        </div>
+      </CartProvider>
+    </AuthProvider>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-      <Toaster position="top-right" richColors />
+      <AppLayout />
+      <Toaster position="top-right" richColors closeButton />
     </QueryClientProvider>
   );
 }

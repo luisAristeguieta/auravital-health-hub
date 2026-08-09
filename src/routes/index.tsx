@@ -1,43 +1,70 @@
-import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
-import { Header } from "@/components/auravital/Header";
-import type { Role } from "@/components/auravital/RoleSelector";
-import { PatientBooking } from "@/components/auravital/PatientBooking";
-import { DoctorDashboard } from "@/components/auravital/DoctorDashboard";
-import { AdminDashboard } from "@/components/auravital/AdminDashboard";
-
-const title = "AuraVital — CRM Médico, Agenda y Salud Terapéutica";
-const description =
-  "Plataforma AuraVital: agenda citas médicas, gestiona historias clínicas, ganancias por consulta y la tienda de productos terapéuticos.";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { LandingHome } from "@/components/auravital/LandingHome";
+import { useAuth } from "@/context/AuthContext";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
+      { title: "AuraVital — CRM Médico, Agenda y Salud Terapéutica" },
+      {
+        name: "description",
+        content:
+          "Plataforma AuraVital: agenda citas médicas, gestión de salud terapéutica con calor de jade, catálogo de equipos, historias clínicas y tienda médica.",
+      },
+      { property: "og:title", content: "AuraVital — CRM Médico, Agenda y Salud Terapéutica" },
+      {
+        property: "og:description",
+        content:
+          "Plataforma AuraVital: agenda citas médicas, gestión de salud terapéutica con calor de jade, catálogo de equipos, historias clínicas y tienda médica.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: Index,
+  component: HomePage,
 });
 
-function Index() {
-  const [role, setRole] = useState<Role>("patient");
+function HomePage() {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const handleBooking = (specialtyId?: string) => {
+    if (!user) {
+      navigate({
+        to: "/login",
+        search: { tab: "login", role: "patient" },
+      });
+    } else {
+      navigate({
+        to: "/paciente",
+        search: specialtyId ? { specialty: specialtyId } : {},
+      });
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header role={role} onRoleChange={setRole} />
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-        {role === "patient" && <PatientBooking />}
-        {role === "doctor" && <DoctorDashboard />}
-        {role === "admin" && <AdminDashboard />}
-      </main>
-      <footer className="border-t py-6 text-center text-xs text-muted-foreground">
-        AuraVital · Prototipo funcional con datos de demostración
-      </footer>
-    </div>
+    <LandingHome
+      onGoToBooking={handleBooking}
+      onGoToCatalog={() => {
+        navigate({ to: "/catalogo" });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+      onGoToDoctor={() => {
+        if (user?.role === "doctor") {
+          navigate({ to: "/doctor" });
+        } else {
+          navigate({ to: "/login", search: { tab: "login", role: "doctor" } });
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+      onGoToAdmin={() => {
+        if (user?.role === "admin") {
+          navigate({ to: "/admin" });
+        } else {
+          navigate({ to: "/login", search: { tab: "login", role: "admin" } });
+        }
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+    />
   );
 }

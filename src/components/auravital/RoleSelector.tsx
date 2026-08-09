@@ -1,12 +1,14 @@
-import { Stethoscope, ShieldCheck, User } from "lucide-react";
+import { Stethoscope, ShieldCheck, User, Home, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export type Role = "patient" | "doctor" | "admin";
+export type Role = "home" | "catalog" | "patient" | "doctor" | "admin";
 
 const roles: { id: Role; label: string; icon: typeof User }[] = [
-  { id: "patient", label: "Vista Paciente", icon: User },
-  { id: "doctor", label: "Vista Doctor", icon: Stethoscope },
-  { id: "admin", label: "Vista Súper Admin", icon: ShieldCheck },
+  { id: "home", label: "Inicio", icon: Home },
+  { id: "catalog", label: "Catálogo", icon: ShoppingBag },
+  { id: "patient", label: "Soy Cliente", icon: User },
+  { id: "doctor", label: "Soy Doctor", icon: Stethoscope },
+  { id: "admin", label: "Administrador", icon: ShieldCheck },
 ];
 
 export function RoleSelector({ role, onChange }: { role: Role; onChange: (r: Role) => void }) {
