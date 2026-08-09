@@ -10,6 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CatalogoRouteImport } from './routes/catalogo'
+import { Route as DoctorRouteImport } from './routes/doctor'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PacienteRouteImport } from './routes/paciente'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
