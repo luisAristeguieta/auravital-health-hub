@@ -26,9 +26,9 @@ export function CalendarBooking({
   onTime,
 }: {
   specialtyId: string;
-  doctorId?: string;
-  date?: string;
-  time?: string;
+  doctorId?: string | undefined;
+  date?: string | undefined;
+  time?: string | undefined;
   onDoctor: (d: Doctor) => void;
   onDate: (iso: string) => void;
   onTime: (t: string) => void;

@@ -32,7 +32,7 @@ export function SpecialtyGrid({
   selectedId,
   onSelect,
 }: {
-  selectedId?: string;
+  selectedId?: string | undefined;
   onSelect: (s: Specialty) => void;
 }) {
   return (
