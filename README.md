@@ -2,66 +2,64 @@
 
 > Plataforma integral de gestión médica y comercio electrónico diseñada para clínicas de salud integral, tratamientos de medicina alternativa y especialidades médicas.
 
+<p align="center">
+  <a href="https://auravital.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Demo%20en%20Vivo-Vercel-success?style=for-the-badge&logo=vercel" alt="Demo Vercel">
+  </a>
+</p>
+
+<p align="center">
+  <img src="deliverables/Landing1.PNG" alt="AuraVital Landing Page" width="85%"/>
+</p>
+
 ---
 
 ## 🎓 Propósito Académico & Prototipado
 
 Este proyecto ha sido desarrollado con **fines estrictamente académicos, de demostración técnica y aprendizaje tecnológico**. 
 
-* **Demostración de Arquitectura Software:** Sirve como un prototipo funcional para la validación de experiencia de usuario (UX/UI), modelado de datos de salud y flujos de trabajo en sistemas médicos y e-commerce.
-* **Datos Simulados (Mock Data):** Toda la información de pacientes, historias clínicas, diagnósticos, valores de laboratorio y registros financieros son completamente ficticios y utilizados únicamente para simular escenarios reales de un entorno clínico.
-* **Exención de Responsabilidad:** No está destinado a reemplazar sistemas de gestión médica reales ni a ser utilizado con datos médicos confidenciales sin la debida integración de normativas de seguridad (HIPAA / GDPR).
+- **Demostración de Arquitectura Software:** Sirve como un prototipo funcional para la validación de experiencia de usuario (UX/UI), modelado de datos de salud y flujos de trabajo en sistemas médicos y e-commerce.
+- **Datos Simulados (Mock Data):** Toda la información de pacientes, historias clínicas, diagnósticos, valores de laboratorio y registros financieros son completamente ficticios y utilizados únicamente para simular escenarios reales de un entorno clínico.
+- **Exención de Responsabilidad:** No está destinado a reemplazar sistemas de gestión médica reales ni a ser utilizado con datos médicos confidenciales sin la debida integración de normativas de seguridad (HIPAA / GDPR).
 
 ---
 
-## 🌟 Características Principales
+## 🌟 Características Principales & Vistas del Sistema
 
 ### 🌐 1. Vista Pública & Landing Page
 - **Hero Section Dinámico:** Presentación de valor con imágenes médicas y navegación limpia.
-- **La Ciencia Detrás:** Explicación técnica de tratamientos (*Termoterapia, Escaneo Espinal, Acupresión y EMS*) con imágenes de referencia.
-- **Teaser de Catálogo:** Resumen visual de equipos médicos con enlace directo a la tienda.
-- **Agenda en Línea:** Catálogo fotográfico de 10 especialidades médicas con agendamiento directo.
-- **Prueba Social:** Sección de testimonios reales con fotografía, padecimiento y calificación.
-
----
+- **La Ciencia Detrás:** Explicación técnica de tratamientos (*Termoterapia, Escaneo Espinal, Acupresión y EMS*).
+- **Agenda en Línea:** Catálogo fotográfico de especialidades médicas con agendamiento directo.
 
 ### 🛒 2. E-Commerce & Catálogo Terapéutico
-- **Vista Dedicada (`/catalogo`):** Catálogo de productos de grado médico (Camilla Térmica de Jade, Cinturón EMS, Masajeador Espinal, Cojín Cerámico).
-- **Ficha Técnica:** Vista detallada de la Camilla Térmica con mapa de puntos de presión y rangos térmicos.
-- **Carrito de Compras:** Sistema lateral (*Drawer*) con control de unidades, totales y pasarela de pago simulada.
+- **Vista Dedicada (`/catalogo`):** Catálogo oficial de productos de grado médico (Camilla Térmica de Jade, Cinturón EMS, Masajeador Espinal, Cojín Cerámico) con fichas técnicas y rangos térmicos.
 
----
+<p align="center">
+  <img src="deliverables/Catalogo.PNG" alt="Catálogo de Equipos Terapéuticos" width="85%"/>
+</p>
 
-### 👤 3. Portal del Paciente / Cliente
-- **Historial de Citas:** Pestaña interactiva con estado de citas (*Próximas, Atendidas, Canceladas y Pendientes de Verificación*).
-- **Wizard de Agendamiento (5 pasos):**
-  1. Selección de Especialidad Médica con apoyo visual.
-  2. Elección de Doctor (2-3 médicos disponibles) y disponibilidad horaria.
-  3. Formulario de Datos Personales.
-  4. Pasarela de Pago (Tarjeta / Comprobante de Transferencia Bancaria).
-  5. Confirmación con opción de sincronización con Google Calendar.
+### 👤 3. Portal del Paciente & Wizard de Agendamiento
+- **Wizard de Agendamiento (5 pasos):** Selección de especialidad, elección de doctor en tiempo real, formulario, pasarela simulada y confirmación.
 
----
+<p align="center">
+  <img src="deliverables/Patient2.PNG" alt="Portal del Paciente - Agendamiento" width="85%"/>
+</p>
 
-### 🩺 4. Panel del Doctor
-- **Agenda del Día:** Vista inicial de atención con cambio de estados en tiempo real (*En Espera, Atendido, No Asistió*).
-- **Calendario en Cuadrícula:** Conmutador de vista para planificación por **Día**, **Semana (Parrilla Horaria)** y **Mes**.
-- **Historia Clínica Digital:**
-  - Registro completo de Signos Vitales (PA, FC, Temp, SpO2) e IMC calculado automáticamente.
-  - Expediente previo detallando el médico tratante.
-  - **Módulo de Laboratorio:** Resultados con indicadores de rango (*Normal vs Alterado/Elevado*) y emisor de órdenes de examen.
-- **Registro Rápido de Consultorio:** Modal de triage para dar de alta pacientes con signos vitales en recepción.
+### 🩺 4. Panel del Doctor & Historia Clínica
+- **Calendario en Cuadrícula:** Conmutador para planificación por Día, Semana y Mes.
+- **Historia Clínica Digital:** Registro completo de Signos Vitales, cálculo automático de IMC y expediente de consultas previas.
 
----
+<p align="center">
+  <img src="deliverables/Dr1.PNG" alt="Panel del Doctor - Agenda" width="49%"/>
+  <img src="deliverables/Dr2.PNG" alt="Historia Clínica Digital" width="49%"/>
+</p>
 
 ### 🛡️ 5. Control General (Super Administrador)
-- **Dashboard Ejecutivo:** Métricas KPI globales e indicadores financieros.
-- **Detalle Contable Clicable:**
-  - Desglose modal de **Ingresos por Citas** (Comisión Clínica vs Doctor).
-  - Desglose modal de **Ventas de Productos** (Historial de compras y pedidos).
-- **Módulo de Mantenimiento:**
-  - Alta y edición de Doctores, fotos, comisiones porcentuales y asignación de **Horarios/Turnos de Atención**.
-  - Aprobación/Rechazo de transferencias bancarias de pacientes.
+- **Dashboard Ejecutivo & Finanzas:** Métricas globales, desglose modal de ingresos por citas (comisión clínica vs doctor) y gestión de turnos de médicos.
+
+<p align="center">
+  <img src="deliverables/Admin.PNG" alt="Panel de Control Administrativo" width="85%"/>
+</p>
 
 ---
 
@@ -78,5 +76,14 @@ Este proyecto ha sido desarrollado con **fines estrictamente académicos, de dem
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/tu-usuario/auravital-crm.git](https://github.com/tu-usuario/auravital-crm.git)
+   git clone [https://github.com/luisAristeguieta/auravital-crm.git](https://github.com/luisAristeguieta/auravital-crm.git)
    cd auravital-crm
+```
+2. **Instalar dependencias:**
+   ```bash
+   npm install
+```
+3. **Iniciar el servidor:**
+   ```bash
+   npm run dev
+```
